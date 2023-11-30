@@ -111,3 +111,20 @@ qwe = [*f(1)]
 
 
 #  conditions
+if i := d.get(''):
+    pass
+elif not (q := d.get(1)):
+    pass
+else:
+    ...
+
+match qwe:
+    case '1':
+        pass
+    case _:
+        pass
+
+
+#  exceptions
+
+ 
