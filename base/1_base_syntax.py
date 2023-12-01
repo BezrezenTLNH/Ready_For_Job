@@ -127,4 +127,42 @@ match qwe:
 
 #  exceptions
 
- 
+try:
+    1 / 0
+except ZeroDivisionError as exc:
+    pass
+else:
+    pass
+finally:
+    ...
+
+#  classes
+class A:
+
+    class_attrs = None
+
+    def __init__(self, *args, **kwargs):
+        self.args, self.kwargs = args, kwargs
+        self.__test_arg = None
+
+    def main(self):
+        ...
+
+    @property
+    def test_arg(self) -> typing.Any:
+        return self.__test_arg
+
+    @test_arg.setter
+    def test_atg(self, value: typing.Any):
+        self.__test_arg = value
+
+class B(A):
+
+    def main(self) -> None:
+        super().main()
+        print(self.__test_arg)
+
+    @classmethod
+    def create(cls, *args, **kwargs) -> 'B':
+        return cls(*args, **kwargs)
+

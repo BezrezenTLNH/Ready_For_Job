@@ -17,11 +17,26 @@
 # def duplicate_encode(word):
 #     return ''.join(['(' if word.lower().count(w) == 1 else ')' for w in word.lower()])
 
-def word_multiply(word: str, multi: int) -> str:
-    return word * multi
+# def word_multiply(word: str, multi: int) -> str:
+#     return word * multi
 
+# def persistence(n):
+#     count = 0
+#     while n >= 10:
+#         result = 1
+#         while n > 1:
+#             result *= n % 10
+#             n //= 10
+#         n = result
+#         count += 1
+#
+#     return count
 
-text = 'python'
-print(word_multiply(text, 2))
+# def alphabet_position(text):
+#     return ' '.join(str(ord(c) - 96) for c in text.lower() if c.isalpha())
+#     # return ' '.join([str(ord(char)%32) for char in text if char.isalpha()])
 
+# def order(sentence):
+#
+#     return ' '.join(sorted(sentence.split(), key=lambda w: sorted(w)))
 
