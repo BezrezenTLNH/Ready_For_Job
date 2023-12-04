@@ -40,3 +40,8 @@
 #
 #     return ' '.join(sorted(sentence.split(), key=lambda w: sorted(w)))
 
+def narcissistic(value):
+    return sum([int(val)**len(str(value)) for val in str(value)]) == value
+
+
+print(narcissistic(153))
