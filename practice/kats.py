@@ -54,11 +54,12 @@
 #     return max_so_far
 
 def cakes(recipe, available):
-    max_cakes = float('inf')
-
-    for ingredient, amount in recipe.items():
-        if ingredient not in available or available[ingredient] < amount:
-            return 0
-        max_cakes = min(max_cakes, available[ingredient] // amount)
-
-    return max_cakes
+    # max_cakes = float('inf')
+    #
+    # for ingredient, amount in recipe.items():
+    #     if ingredient not in available or available[ingredient] < amount:
+    #         return 0
+    #     max_cakes = min(max_cakes, available[ingredient] // amount)
+    #
+    # return max_cakes
+    return min(available.get(k, 0) / recipe[k] for k in recipe)
