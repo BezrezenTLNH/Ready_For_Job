@@ -53,13 +53,35 @@
 #
 #     return max_so_far
 
-def cakes(recipe, available):
-    # max_cakes = float('inf')
-    #
-    # for ingredient, amount in recipe.items():
-    #     if ingredient not in available or available[ingredient] < amount:
-    #         return 0
-    #     max_cakes = min(max_cakes, available[ingredient] // amount)
-    #
-    # return max_cakes
-    return min(available.get(k, 0) / recipe[k] for k in recipe)
+# def cakes(recipe, available):
+#     # max_cakes = float('inf')
+#     #
+#     # for ingredient, amount in recipe.items():
+#     #     if ingredient not in available or available[ingredient] < amount:
+#     #         return 0
+#     #     max_cakes = min(max_cakes, available[ingredient] // amount)
+#     #
+#     # return max_cakes
+#     return min(available.get(k, 0) / recipe[k] for k in recipe)
+class PaginationHelper:
+    def __init__(self, collection, items_per_page):
+        self.collection = collection
+        self.items_per_page = items_per_page
+
+    def item_count(self):
+        return len(self.collection)
+
+    def page_count(self):
+        return -(-self.item_count() // self.items_per_page)
+
+    def page_item_count(self, page_index):
+        if page_index < 0 or page_index >= self.page_count():
+            return -1
+        if page_index == self.page_count() - 1:
+            return self.item_count() % self.items_per_page or self.items_per_page
+        return self.items_per_page
+
+    def page_index(self, item_index):
+        if item_index < 0 or item_index >= self.item_count():
+            return -1
+        return item_index // self.items_per_page
