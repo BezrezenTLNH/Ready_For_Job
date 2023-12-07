@@ -85,3 +85,21 @@ class PaginationHelper:
         if item_index < 0 or item_index >= self.item_count():
             return -1
         return item_index // self.items_per_page
+
+
+# def scramble(s1, s2):
+#     # return [i for i in s2 if s2.count(i) <= s1.count(i)] == list(s2)  ## kinda slow
+#     return all(s1.count(x) >= s2.count(x) for x in set(s2))
+
+# def decode_morse(morse_code):
+#     # Remember - you can use the preloaded MORSE_CODE dictionary:
+#     # For example:
+#     # MORSE_CODE['.-'] = 'A'
+#     # MORSE_CODE['--...'] = '7'
+#     # MORSE_CODE['...-..-'] = '$'
+#     decoded_message = ''
+#     for word in morse_code.split('   '):
+#         for letter in word.split():
+#             decoded_message += MORSE_CODE[letter]
+#         decoded_message += ' '
+#     return decoded_message.strip()
