@@ -63,28 +63,28 @@
 #     #
 #     # return max_cakes
 #     return min(available.get(k, 0) / recipe[k] for k in recipe)
-class PaginationHelper:
-    def __init__(self, collection, items_per_page):
-        self.collection = collection
-        self.items_per_page = items_per_page
-
-    def item_count(self):
-        return len(self.collection)
-
-    def page_count(self):
-        return -(-self.item_count() // self.items_per_page)
-
-    def page_item_count(self, page_index):
-        if page_index < 0 or page_index >= self.page_count():
-            return -1
-        if page_index == self.page_count() - 1:
-            return self.item_count() % self.items_per_page or self.items_per_page
-        return self.items_per_page
-
-    def page_index(self, item_index):
-        if item_index < 0 or item_index >= self.item_count():
-            return -1
-        return item_index // self.items_per_page
+# class PaginationHelper:
+#     def __init__(self, collection, items_per_page):
+#         self.collection = collection
+#         self.items_per_page = items_per_page
+#
+#     def item_count(self):
+#         return len(self.collection)
+#
+#     def page_count(self):
+#         return -(-self.item_count() // self.items_per_page)
+#
+#     def page_item_count(self, page_index):
+#         if page_index < 0 or page_index >= self.page_count():
+#             return -1
+#         if page_index == self.page_count() - 1:
+#             return self.item_count() % self.items_per_page or self.items_per_page
+#         return self.items_per_page
+#
+#     def page_index(self, item_index):
+#         if item_index < 0 or item_index >= self.item_count():
+#             return -1
+#         return item_index // self.items_per_page
 
 
 # def scramble(s1, s2):
@@ -103,3 +103,32 @@ class PaginationHelper:
 #             decoded_message += MORSE_CODE[letter]
 #         decoded_message += ' '
 #     return decoded_message.strip()
+
+# def filter_string(text, deleted_char):
+#     result = ''
+#     text = text.lower()
+#     deleted_char = deleted_char.lower()
+#     for simbol in text:
+#         if simbol != deleted_char:
+#             result += simbol
+#     return result
+#
+#
+# text = 'If I look forward I win'
+# print(filter_string(text, 'i'))  # 'f  look forward  wn'
+# print(filter_string(text, 'O'))  # 'If I lk frward I win'
+
+import string
+# def is_pangram(s):
+#     return (sum([ord(letter)%32 for letter in
+#                  set(s.lower()) if letter.isalpha()]) == sum
+#     ([ord(i)%32 for i in 'abcdefghijklmnopqrstuvwxyz']))
+
+# import string
+#
+# def is_pangram(s):
+#     return set(string.ascii_lowercase).issubset(s.lower())
+#
+# word = "The quick, brown fox jumps over the lazy dog!"
+# print(is_pangram(word))
+
