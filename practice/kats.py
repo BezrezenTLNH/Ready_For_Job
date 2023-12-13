@@ -132,20 +132,41 @@ import string
 # word = "The quick, brown fox jumps over the lazy dog!"
 # print(is_pangram(word))
 
-def find_even_index(arr):
-    result = [n for n, i in enumerate(arr) if sum(arr[n+1:]) == sum(arr[:n])]
-    return min(result) if result else -1
+# def find_even_index(arr):
+#     result = [n for n, i in enumerate(arr) if sum(arr[n+1:]) == sum(arr[:n])]
+#     return min(result) if result else -1
+#
+# def find_even_index(arr):
+#     for i in range(len(arr)):
+#         if sum(arr[:i]) == sum(arr[i+1:]):
+#             return i
+#     return -1
+#
+# print(find_even_index([1,2,3,4,3,2,1]))
+# print(find_even_index([1,100,50,-51,1,1]))
+# print(find_even_index([20,10,30,10,10,15,35]))
+# print(find_even_index([1,2,3,4,5,6]))
+# print(find_even_index([20,10,-80,10,10,15,35]))
+# # print(sum([50,-51,1,1]))
 
-def find_even_index(arr):
-    for i in range(len(arr)):
-        if sum(arr[:i]) == sum(arr[i+1:]):
-            return i
-    return -1
+def pick_peaks(arr):
+    pos = []
+    peaks = []
+    plateau_start = None
 
-print(find_even_index([1,2,3,4,3,2,1]))
-print(find_even_index([1,100,50,-51,1,1]))
-print(find_even_index([20,10,30,10,10,15,35]))
-print(find_even_index([1,2,3,4,5,6]))
-print(find_even_index([20,10,-80,10,10,15,35]))
-# print(sum([50,-51,1,1]))
+    for i in range(1, len(arr)):
+        if arr[i] > arr[i - 1]:
+            plateau_start = i
+        elif arr[i] < arr[i - 1] and plateau_start is not None:
+            pos.append(plateau_start)
+            peaks.append(arr[plateau_start])
+            plateau_start = None
 
+    return {'pos': pos, 'peaks': peaks}
+
+
+print(pick_peaks([1,2,3,6,4,1,2,3,2,1]))
+print(pick_peaks([3,2,3,6,4,1,2,3,2,1,2,3]))
+print(pick_peaks([3,2,3,6,4,1,2,3,2,1,2,2,2,1]))
+print(pick_peaks([2,1,3,1,2,2,2,2,1]))
+print(pick_peaks([1,1,1,1]))
